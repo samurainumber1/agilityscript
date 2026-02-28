@@ -215,6 +215,44 @@ local function toggleDeadly()
 end
 deadlyButton.MouseButton1Click:Connect(toggleDeadly)
 
+-- COIN TELEPORT BUTTON (Right Side)
+local coinButton = Instance.new("TextButton")
+coinButton.Size = UDim2.new(0, 60, 0, 60)
+coinButton.Position = UDim2.new(1, -80, 0.5, -30) -- right-middle of screen
+coinButton.Text = "🪙"
+coinButton.BackgroundColor3 = Color3.fromRGB(255, 200, 0)
+coinButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+coinButton.Font = Enum.Font.GothamBold
+coinButton.TextScaled = true
+coinButton.Parent = screenGui
+coinButton.AutoButtonColor = true
+
+-- Styling
+local coinCorner = Instance.new("UICorner")
+coinCorner.CornerRadius = UDim.new(1, 0) -- fully round
+coinCorner.Parent = coinButton
+
+local coinStroke = Instance.new("UIStroke")
+coinStroke.Color = Color3.fromRGB(0, 0, 0)
+coinStroke.Thickness = 2
+coinStroke.Parent = coinButton
+
+-- Target CFrame
+local coinCFrame = CFrame.new(
+    53.1019554, 142.629669, -185.019394,
+    0.788759589, -5.51140573e-08, 0.614701807,
+    4.55741578e-08, 1, 3.11809778e-08,
+    -0.614701807, 3.42022166e-09, 0.788759589
+)
+
+-- Teleport Logic
+coinButton.MouseButton1Click:Connect(function()
+    local humanoid, hrp = getHumanoid()
+    if hrp then
+        hrp.CFrame = coinCFrame
+    end
+end)
+
 -- KEYBINDS
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
     if gameProcessed then return end
