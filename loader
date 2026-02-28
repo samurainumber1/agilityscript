@@ -1,0 +1,13 @@
+-- Config
+_G.AgilityConfig = {
+    DefaultMoveValue = -6,
+    DefaultSetSpeedValue = 16,
+    DefaultSetJumpValue = 50,
+    EmergencyJumpMultiplier = 1.5,
+    EmergencySpeedValue = nil, -- nil keeps current speed
+    DeadlyEmergencySpeedValue = 30,
+    DeadlyEmergencyJumpMultiplier = 2
+}
+
+--Load
+loadstring(game:HttpGet("https://raw.githubusercontent.com/samurainumber1/agilityscript/refs/heads/main/main"))()
